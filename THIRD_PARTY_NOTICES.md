@@ -13,4 +13,4 @@ Upstream license: **MIT**, preserved verbatim in [third_party/TradingAgents_for_
 
 ## Dependencies and data
 
-Python dependencies are installed separately and retain their respective licenses. Data-provider subscriptions, access conditions and redistribution restrictions are separate from this project's source-code license. This repository includes no collected market data, articles, account records, model responses or performance results.
+Python dependencies are installed separately and retain their respective licenses. Data-provider subscriptions, access conditions and redistribution restrictions are separate from this project's source-code license. This repository includes no collected market data, articles, account records, model responses or raw trading ledgers. The README reports a dated aggregate summary of simulated results.

@@ -14,7 +14,33 @@ An intraday MCX crude-oil research desk with an AI council, market-data feeds, e
 - Replays eligible rejected plans under **What if?**, keeping hypothetical outcomes separate from recorded trades.
 - Provides offline entry, regime and optional forecasting experiments. Research results never automatically enable a strategy.
 
-No personal history or precomputed results are included. A fresh installation starts with an empty local record.
+Raw trading records and personal account data are not included. A fresh installation starts with an empty local record.
+
+## Recorded paper-trading results
+
+**Snapshot: 20 November 2026, 14:21 IST.** These are recorded virtual-money simulations from intermittent development runs. No real broker orders were placed. The combined archive spans different strategy versions, holding periods and sizing assumptions, so the current intraday results are shown separately. The intraday cohort also spans configuration changes; it is not a backtest of this exact published version.
+
+| Metric | Overall: all recorded versions | Legacy simulations | Current intraday strategy |
+| --- | ---: | ---: | ---: |
+| Recorded trade period: first entry to last exit | 20 Aug–30 Oct 2026 | 20 Aug–12 Oct 2026 | 13–30 Oct 2026 |
+| Closed trades | 49 | 34 | 15 |
+| Winning / losing trades | 16 / 33 | 11 / 23 | 5 / 10 |
+| Win rate after recorded fees | 32.7% | 32.4% | 33.3% |
+| Gross simulated P&L | +₹72,898 | +₹72,018 | +₹880 |
+| Recorded simulated transaction fees | ₹11,520 | ₹6,720 | ₹4,800 |
+| **Net simulated P&L after recorded fees** | **+₹61,378** | **+₹65,298** | **−₹3,920** |
+| Profit factor after recorded fees | 1.66 | 1.83 | 0.73 |
+
+**The current intraday strategy is losing money in this sample.** The positive overall figure comes from the older simulation history and does not demonstrate that the current strategy is profitable. There were zero open simulated positions at this snapshot; the last completed trade was on 30 October. The date range does not imply uninterrupted service operation.
+
+How these figures were calculated:
+
+- Count only filled, closed simulated trades, deduplicated by their stored trade identity. One recovered legacy exit replaces its unresolved version; it is not counted twice. Signals and trades representing the same position are not added together.
+- Use each trade's recorded fees, entry, exit, size and net outcome. Gross minus recorded fees reconciles to net P&L for all 49 trades. The intraday subset also agrees with the application's validated intraday feedback summary, with zero excluded records.
+- A win has positive net P&L after recorded fees. Profit factor is the sum of positive net outcomes divided by the absolute sum of negative net outcomes. Unfilled plans, rejected signals and **What if?** replays are excluded.
+- Net P&L here excludes LLM API spending, market-data subscriptions and unmodeled execution slippage. The simulator's fill, lot-size, margin and cost assumptions are not actual broker executions. Legacy outcomes used earlier rules and include a recovered exit.
+
+This small, changing sample is not an independently audited benchmark, an untouched out-of-sample test or a promise of future performance. Raw ledgers, market observations and account identifiers remain private, so these historical figures cannot be independently reproduced from this source-only repository. This is a dated snapshot, not an automatically updating performance feed.
 
 ## Requirements
 
@@ -99,7 +125,7 @@ Historical replay cannot reproduce unavailable tick data, broker execution, AI l
 
 ## Data and privacy
 
-Credentials and sessions belong in ignored local configuration and `.secrets/`. Runtime records are written under ignored `cache/`, `reports/`, `signals/`, `ledger/`, `events/`, `memory/` and `research/` directories. These records can contain account identifiers, model responses, simulated activity, costs and local paths; review them before sharing. The public export includes source code, synthetic tests and empty credential examples only.
+Credentials and sessions belong in ignored local configuration and `.secrets/`. Runtime records are written under ignored `cache/`, `reports/`, `signals/`, `ledger/`, `events/`, `memory/` and `research/` directories. These records can contain account identifiers, model responses, simulated activity, costs and local paths; review them before sharing. The public export includes source code, synthetic tests, empty credential examples and the dated aggregate results above. Individual trading records and private account details are excluded.
 
 Configured LLM providers receive the analysis prompts: market observations, news context, candidate plans and selected simulated-trade feedback. Provider fallback routes can send prompts to more than one configured endpoint. Broker credentials are used by the data adapters for authentication and are not intended as model inputs. Enabling optional Telegram notifications sends the configured notification payload to Telegram. Streamlit usage-stat collection is disabled in the supplied settings.
 
