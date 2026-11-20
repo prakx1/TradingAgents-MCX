@@ -1,0 +1,8 @@
+# Optional forecast experiments only. Install in .venv-research, not the running desk.
+pandas>=2.0
+numpy>=1.24
+torch==2.10.0
+huggingface_hub==0.33.1
+einops==0.8.1
+safetensors==0.6.2
+tqdm==4.67.1

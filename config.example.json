@@ -1,0 +1,107 @@
+{
+  "llm": {
+    "api_key": "",
+    "base_url": "https://api.deepseek.com/v1",
+    "model": "deepseek-chat",
+    "reasoning_model": "deepseek-reasoner",
+    "max_tokens": 4000,
+    "temperature": 0.1,
+    "models": {},
+    "active_provider": "",
+    "providers": {}
+  },
+  "data_keys": {
+    "eia_api_key": "",
+    "alpha_vantage_key": "",
+    "newsapi_key": "",
+    "gnews_key": "",
+    "serper_key": ""
+  },
+  "angel_one": {
+    "api_key": "",
+    "client_id": "",
+    "pin": "",
+    "totp_secret": ""
+  },
+  "telegram": {
+    "bot_token": "",
+    "chat_id": ""
+  },
+  "analysis": {
+    "symbol": "CRUDEOIL",
+    "lookback_days": 365,
+    "news_days_back": 3,
+    "max_news": 40,
+    "debate_rounds": 2,
+    "modules": [
+      "technical",
+      "fundamentals",
+      "news",
+      "positioning",
+      "term_structure",
+      "basis"
+    ],
+    "sentinel_interval_min": 3,
+    "council_cooldown_min": 10,
+    "sentinel_offhours_interval_min": 60,
+    "night_watch_hours": 2,
+    "radar_interval_min": 5
+  },
+  "shoonya": {
+    "user_id": "",
+    "password": "",
+    "totp_secret": "",
+    "vendor_code": "",
+    "api_secret": "",
+    "imei": ""
+  },
+  "strategies": {
+    "intraday": {
+      "enabled": true,
+      "interval_hours": 0.5,
+      "entry_cutoff": "23:00",
+      "square_off": "23:15",
+      "session_open": "09:00",
+      "session_close": "23:30",
+      "max_quote_age_seconds": 120,
+      "max_hold_days": 0,
+      "enforce_risk_gate": true,
+      "modules": [
+        "technical",
+        "news",
+        "basis"
+      ],
+      "debate_rounds": 1,
+      "min_reward_risk": 1.5
+    },
+    "long_term": {
+      "enabled": false,
+      "interval_hours": 2.0,
+      "entry_cutoff": "23:15",
+      "session_open": "09:00",
+      "session_close": "23:30",
+      "max_quote_age_seconds": 120,
+      "max_hold_days": 20,
+      "enforce_risk_gate": true,
+      "min_reward_risk": 1.5
+    }
+  },
+  "paper": {
+    "enabled": true,
+    "initial_capital_inr": 1000000,
+    "risk_per_trade_pct": 1.0,
+    "max_lots": 4,
+    "lot_size_bbl": 10,
+    "margin_per_lot_inr": 27374,
+    "roundtrip_cost_per_lot_inr": 80,
+    "max_new_trades_per_day": 3,
+    "daily_loss_limit_pct": 1.0,
+    "weekly_loss_limit_pct": 2.5
+  },
+  "entry_models": {
+    "regime_enabled": true
+  },
+  "mock_experiment": {
+    "enabled": false
+  }
+}
